@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@media print {
+  /* Configuração básica da página */
+  @page {
+    size: A4 portrait;
+    margin: 2cm 1cm 1.5cm 1cm; /* Aumentei a margem superior para o cabeçalho */
+
+    /* Cabeçalho fixo */
+    @top-center {
+      content: element(pageHeader);
+    }
+
+    /* Rodapé */
+    @bottom-center {
+      content: "Página " counter(page) " de " counter(pages);
+      font-size: 10pt;
+      color: #6b7280;
+    }
+  }
+
+  /* Reset de impressão */
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    color: black !important;
+    font-family: "Arial", sans-serif !important;
+    line-height: 1.5;
+  }
+
+  /* Esconde elementos não desejados */
+  .mainHeader,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Container do cabeçalho timbrado */
+  .print-header {
+    position: running(pageHeader);
+    width: 100%;
+    height: 3cm; /* Altura fixa para o cabeçalho */
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f97316;
+  }
+
+  /* Conteúdo do timbrado */
+  .letterhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+  }
+
+  .logo-area h1 {
+    color: #f97316;
+    font-size: 22pt;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .logo-area p {
+    color: #6b7280;
+    margin: 2px 0 0 0;
+    font-size: 10pt;
+  }
+
+  .report-info {
+    text-align: right;
+    font-size: 10pt;
+    color: #6b7280;
+  }
+
+  /* Ajuste do conteúdo principal */
+  .mainContent {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Estilos para a tabela */
+  .finance-table {
+    width: 100% !important;
+    margin: 0 !important;
+    border-collapse: collapse !important;
+    font-size: 10pt;
+  }
+
+  .finance-table th,
+  .finance-table td {
+    padding: 8px 12px !important;
+    border: 1px solid #d1d5db !important;
+    page-break-inside: avoid;
+  }
+
+  .finance-table th {
+    background-color: #f3f4f6 !important;
+    color: #111827 !important;
+  }
+
+  /* Total */
+  .total-display {
+    font-size: 12pt !important;
+    font-weight: bold;
+    margin-top: 15px !important;
+  }
+
+  /* Garante que as linhas não quebrem */
+  tr {
+    page-break-inside: avoid;
+  }
+
+  thead {
+    color: black;
+  }
+}
